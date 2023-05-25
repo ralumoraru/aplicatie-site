@@ -1,0 +1,27 @@
+<div class="container mt-5 mb-5">
+   
+    <div class="row">
+
+        <div class="col-lg-4" *ngFor="let pd of productData">
+
+            <div class="productbox mt-3 mb-3">
+                <img src="{{pd.productImg}}" alt="P1"/>
+               <h1>{{pd.productName}}</h1>
+               <p>{{pd.productDetails}}</p>
+               <p>{{pd.productPrice | currency:'RON '}}</p>
+               <button (click)="incrementQuantity(pd)" type="button"class="btn">
+                <i class="bi bi-plus-circle-fill"></i>
+            </button>
+            <span>{{pd.qnt}}</span>
+            <button (click)="decrementQuantity(pd)" type="button"class="btn">
+                <i class="bi bi-dash-circle-fill"></i>
+            </button>
+
+               <br/>
+               <!-- <a class="buybtn" [routerLink]="['/menu',pd.id]">Buy now &nbsp;<i class="bi bi-bag"></i></a> -->
+               <a type="button" class="buybtn" (click)="addCart(pd)">Buy now &nbsp;<i class="bi bi-bag"></i></a>
+
+            </div>
+        </div>
+    </div>
+</div>

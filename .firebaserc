@@ -1,0 +1,16 @@
+{
+  "projects": {
+    "default": "app-school-web",
+    "hb": "app-school-web"
+  },
+  "targets": {
+    "app-school-web": {
+      "hosting": {
+        "app": [
+          "app-school-web"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

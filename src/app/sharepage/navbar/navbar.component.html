@@ -1,0 +1,34 @@
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="">ElectronicService</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav" >
+        <ul class="navbar-nav ms-auto" >
+          <li class="nav-item">
+            <!-- cand este apasat pe butonul home intra in pagina de home, router link activate options este pentru ca home sa fie bold numa cand e pe home-->
+            <a class="nav-link active" routerLink="" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:true}" >Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="menu" routerLinkActive="active-link">Products</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="about" routerLinkActive="active-link">Contact us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"  routerLink="login" routerLinkActive="active-link" >Login</a>
+            <!-- <a class="nav-link" style="cursor:pointer">Logout</a>  -->
+          </li>
+
+          <li class="nav-item cart-icon">
+            <button class="btn btn-primary" [disabled]="cartItem == 0">
+           <a routerLink="/cart"> <i class="bi bi-bag"></i></a>
+           <div class="badge" >{{cartItem}}</div>
+          </button>
+        </li>
+        </ul>
+      </div>
+    </div>
+  </nav>

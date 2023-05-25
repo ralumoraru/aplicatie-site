@@ -1,0 +1,63 @@
+<router-outlet></router-outlet>
+<div class="container ">
+<div class="container1 ">
+   <h1 class="text-center">Contact us</h1>
+
+    <form [formGroup]="contactForm" class="form-group">
+         
+         <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name">
+         </mat-form-field>
+
+         <small *ngIf="contactForm.get('name')!.invalid && contactForm.get('name')!.touched">Name is required!</small>
+
+         <mat-form-field>
+            <mat-label>Enter your email</mat-label>
+            <input matInput formControlName="email">
+          </mat-form-field>
+
+          <small *ngIf="contactForm.get('email')!.invalid && contactForm.get('email')!.touched">Email is required!</small>
+
+
+        <mat-form-field appearance="fill">
+            <mat-label>Message</mat-label>
+            <textarea matInput  formControlName="message"></textarea>
+        </mat-form-field>
+
+        <small *ngIf="contactForm.get('message')!.invalid && contactForm.get('message')!.touched">Message is required!</small>
+
+
+        <button type="reset" mat-raised-button color="primary" [disabled]="contactForm.invalid" (click)="submitData(contactForm.value)">Send Message</button>
+
+        <p *ngIf="isSubmit" class="submitMessage">{{ submitMessage}}</p>
+       
+       
+    </form>
+</div>
+</div>
+
+    <!-- <form class="col-lg-8">
+        <div class="row">
+            <div class="col-lg-6 mt-2 mb-2">
+                <input type="text" class="form-control" placeholder="Enter First Name" >
+            </div>
+            <div class="col-lg-6 mt-2 mb-2">
+                <input type="text" class="form-control" placeholder="Enter Last Name" >
+            </div>
+            <div class="col-lg-12 mt-2 mb-2">
+                <input type="text" class="form-control" placeholder="Enter Email ID" >
+            </div>
+            <div class="col-lg-12 mt-2 mb-2">
+                <input type="text" class="form-control" placeholder="Enter Message" >
+            </div>
+            <div class="col-lg-12">
+                <button class="btn btn-md btn-dark">Submit</button>
+            </div>
+            
+
+
+        </div>
+    </form> -->
+
+

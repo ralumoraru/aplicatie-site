@@ -1,0 +1,45 @@
+<div class="banner">
+    <div class="content">
+    <h1 class="mb-5">Discover the pieces <br> <br> that your ice cream <br> <br>machine might need.</h1>
+    <a href="/menu" routerLinkActive="active" >See products! <i class="bi bi-arrow-right"></i></a>
+    </div>
+</div>
+
+<div class="container mt-5 mb-4">
+    <h1 class="text-center  ">How to get your <span class="highlight">products!</span> </h1>
+    <div class="row mt-5">
+        <div class="col-lg-4 mt-2">
+            <div class="stepBox">
+                <h1>1</h1>
+              <p>Choose your products.</p>
+            </div>
+        </div>
+        <div class="col-lg-4 mt-2">
+            <div class="stepBox">
+                <h1>2</h1>
+                 <p>Order them.</p>
+            </div>
+      </div>
+      <div class="col-lg-4 mt-2">
+        <div class="stepBox">
+            <h1>3</h1>
+        <p>Enjoy them.</p>
+        </div>
+  </div>
+    </div>
+</div>
+
+<!-- productbox -->
+<div class="container">
+    <h1 class="text-center mt-3">Customers <span class="highlight"> favorites products</span> </h1>
+    <div class="row">
+       <div class="col-lg-3 mt-5" *ngFor="let pd of productData;index as i">
+           <div class="productbox" *ngIf="i<=3" >
+               <img src="{{pd.productImg}}" />
+               <h1>{{pd.productName}}</h1>
+               <p>{{pd.productPrice | currency:'RON '}}</p>
+           </div>
+       </div>
+    </div>
+    <a routerLink="menu" class="viewmorebtn" >view more<i class="bi bi-arrow-right"></i></a>
+</div>

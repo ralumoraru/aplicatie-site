@@ -1,0 +1,32 @@
+.navbar-nav .nav-link, .navbar-nav .nav-link.show
+{
+   color: var(--secondary--color);
+}
+.navbar-nav .nav-link.active-link, .navbar-nav .nav-link.show
+{
+   color: var(--primary--color);
+   font-weight: bold;
+   text-decoration: underline;
+}
+.bi-bag{
+   
+     top: 10px;
+     font-size: 20px;
+     color: #000;
+     cursor:pointer;
+}
+.cart-value{
+   position: relative;
+   color:#000;
+   top: 3px;
+   right: -3px;
+   padding: 4px 10px;
+   font-weight: 16px;
+}
+.badge{
+   background-color: var(--primary--color);
+}
+.btn{
+   background-color: #fff;
+   border-color: #fff;
+}

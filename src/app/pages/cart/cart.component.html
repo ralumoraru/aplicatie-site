@@ -1,0 +1,258 @@
+
+
+<section class="cart_section">
+ <div class="container" >
+  <h2>CART</h2>
+  <div *ngIf="getCartDetails">
+      <table >
+          <tr>
+            <th>Product Name</th>
+            <th >Product Image</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Sub Total</th>
+            <th>Action</th>
+          </tr>
+        <tbody >
+          <tr *ngFor="let getCartDetail of getCartDetails">
+            <td >{{getCartDetail.productName}}</td>
+            <td ><img src="{{getCartDetail.productImg}}" alt="P1"></td>
+            <td>{{getCartDetail.productPrice | currency:'RON '}}</td>
+            <button (click)="incr(getCartDetail.id, getCartDetail.qnt)" type="button" class="btn">
+              <i class="bi bi-plus-circle-fill"></i>
+          </button>
+          <span>{{getCartDetail.qnt}}</span>
+          <button (click)="decr(getCartDetail.id, getCartDetail.qnt)" type="button" class="btn">
+              <i class="bi bi-dash-circle-fill"></i>
+          </button>
+          <td>
+            {{getCartDetail.qnt * getCartDetail.productPrice | number}}
+          
+          </td>
+             
+            <td><button type="button" class="delete" (click)="singleDelete(getCartDetail.id)">
+              <i class="bi bi-trash3"></i>
+          </button>
+           </td>       
+         </tr>
+        </tbody>
+      </table>
+    </div> 
+    
+      <!-- <mat-grid-list cols="2" rowHeight="2:1">
+        <mat-grid-tile>
+          <div class="container">
+            <h1 class="text-center">Order Details</h1>
+            <form class="form-group">
+          <mat-form-field >
+            <mat-label class="form-label">First name</mat-label>
+            <input matInput >
+          </mat-form-field>
+            </form>
+         </div>
+
+        </mat-grid-tile>
+
+
+        <mat-grid-tile>
+          2
+        </mat-grid-tile>
+      </mat-grid-list>
+     -->
+  
+    <div class="row">
+      
+      <main class=" col-lg-8">
+     
+        <br>
+        
+        <h2>
+          Order details
+        </h2>
+        <form [formGroup]="shippingForm" class="form-group">
+          <div class="content-body">
+              <div class="row">
+                <div class="col-6 mb-3">
+                  <label class="form-label">First name</label>
+                  <input type="text" class="form-control" placeholder="Type here" formControlName="firstname">
+                
+                
+                </div> 
+
+                 <small *ngIf="shippingForm.get('firstname')!.invalid && shippingForm.get('firstname')!.touched">Firstname is required!</small>
+    
+                <div class="col-6">
+                  <label class="form-label">Last name</label>
+                  <input type="text" class="form-control" placeholder="Type here" formControlName="lastname">
+              
+
+                </div> 
+
+                <small *ngIf="shippingForm.get('lastname')!.invalid && shippingForm.get('lastname')!.touched">Lastname is required!</small>
+
+    
+                <div class="col-6 mb-3">
+                  <label class="form-label">Phone</label>
+                  <input type="text" value="+40" class="form-control" placeholder="" formControlName="phone">
+                </div> 
+
+                <small *ngIf="shippingForm.get('phone')!.invalid && shippingForm.get('phone')!.touched">Phone number is required!</small>
+
+    
+                <div class="col-6 mb-3">
+                  <label class="form-label">Email</label>
+                  <input type="text" class="form-control" placeholder="example@gmail.com" formControlName="email">
+                </div> 
+              </div> 
+              
+              <small *ngIf="shippingForm.get('email')!.invalid && shippingForm.get('email')!.touched">Email is required!</small>
+
+              <hr class="my-4">
+    
+              <h2 class="card-title"> Shipping info </h2> 
+    
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="shipping" id="shipping1" >
+                <label class="form-check-label" for="flexRadioDefault1">
+                Self pick-up  <br>
+                <small class="text-muted"> Come to our shop </small>
+              
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="shipping" id="shipping2" checked="">
+                <label class="form-check-label" for="flexRadioDefault2">
+                FanCourier deliver  <br>
+                <small class="text-muted">3-7 working days  </small>
+             
+                </label>
+              </div>
+    
+              <br>
+
+              <div class="row">
+                <div class="col-sm-8 mb-3">
+                  <label for="" class="form-label">Address</label>
+                  <input type="text" class="form-control"  placeholder="Type here" formControlName="address">
+                  
+                </div> 
+
+                <small *ngIf="shippingForm.get('address')!.invalid && shippingForm.get('address')!.touched">Address is required!</small>
+
+    
+                <div class="col-sm-4 mb-3">
+                  <label for="" class="form-label">City</label>
+                  <input type="text" class="form-control"  placeholder="Type here" formControlName="city">
+                </div>
+
+                <small *ngIf="shippingForm.get('city')!.invalid && shippingForm.get('city')!.touched">City is required!</small>
+
+    
+                <div class="col-sm-4 col-6 mb-3">
+                  <label for="" class="form-label">Zip</label>
+                  <input type="text" class="form-control"  placeholder="" formControlName="zip">
+                </div> 
+              </div> 
+
+              <small *ngIf="shippingForm.get('zip')!.invalid && shippingForm.get('zip')!.touched">Zip is required!</small>
+
+
+              <hr>
+              <h2 class="card-title"> Payment method </h2> 
+    
+              <div class="form-check1">
+                <input class="form-check-input" type="radio" name="payment" id="payment" checked="">
+                <label class="form-check-label" for="flexRadioDefault2">
+                CASH  <br>
+                <small class="text-muted">For all shipping methods.  </small>
+             
+                </label>
+              </div>
+        
+                <div class="col-lg-4 mb-3" >
+                  <div class="box box-check">
+                    <label class="form-check">
+                      <input class="form-check-input" type="radio" name="dostavka" [disabled]="true">
+                      <b class="border-oncheck" ></b>
+                      <span class="form-check-label" >
+                         Card <br>
+                       <h4> <small class="text-muted"> Indispobile for the moment ! </small></h4>
+                      </span>
+                    </label>
+                  </div>
+                </div> 
+              </div> 
+
+              <!-- <div class="col-sm-8 mb-3 " >
+
+              <label  for="" class="form-label">Tipe the price</label>
+              <input  value="{{total}}" type="text" class="form-control"  placeholder="" formControlName="total" >
+                
+              </div> -->
+        </form>
+     
+      </main> 
+     
+      <aside class="col-xl-4 col-lg-4 summary">
+        <form [formGroup]="shippingForm" class="form-group">
+  
+        <article class="ms-lg-4 mt-4 mt-lg-0" style="max-width: 320px">
+            <h2 class="card-title">SUMMARY</h2>
+            
+            <dl class="dlist-align" >
+              <dt>Total price:</dt>
+              <dd class="text-end"formControlName="total"> {{total}}</dd>
+            </dl>
+            
+            <dl class="dlist-align">
+              <dt>Shipping cost:</dt>
+              <dd class="text-end"> FREE </dd>
+            </dl>
+            <hr>
+            <dl class="dlist-align">
+              <dt> Total: </dt>
+              <dd class="text-end" > 
+                <!-- <input value="{{total}}" type="text" class="form-control"  placeholder="" formControlName="total"> -->
+                <strong class="text-dark">{{total}}</strong> </dd>
+            </dl>
+    
+          
+        <hr>
+
+             <div >
+              <button type="button" class="removeall" (click)="removeall()">
+                  <i class="fa fa-trash"></i>
+                   Remove All Item</button>
+              <button type="button" class="sendorder"  (click)="submitData(shippingForm.value)" >
+      
+                <i class="fa fa-trash"></i>
+                 Send order!</button>
+
+                 <p *ngIf="isSubmit" class="submitMessage">{{ submitMessage}}</p>
+              </div>
+
+        </article> 
+        </form>
+      </aside> 
+   
+    </div>  
+    
+    <br><br>
+    
+   
+ </div>
+ </section>
+ 
+        
+        <!-- <div class="col-md-5 text-right">
+            <button type="button" class="removeall" (click)="removeall()">
+                <i class="fa fa-trash"></i>
+                 Remove All Item</button>
+            <button type="button" class="sendorder" (click)="checkout() "  >
+              <i class="fa fa-trash"></i>
+               Send order!</button>
+      </div> -->
+    
+ 
+
+
